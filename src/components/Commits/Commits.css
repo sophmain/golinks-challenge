@@ -18,3 +18,15 @@
 .go-back:hover {
     color: lightgray;
 }
+.commit-message {
+    background-color: rgb(181, 234, 232);
+    width: 99%;
+    border-radius: 5px;
+    padding: 5px;
+}
+.commit-data {
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

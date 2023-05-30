@@ -38,15 +38,17 @@ const Commits = () => {
                 return (
                     <div key={commit.node_id} className='commit-card'>
                         <div className='commit-message' style={{ fontWeight: 'bold' }}>{commit.commit.message}</div>
-                        {commit.author && (
-                            <div className='commit-username'>
-                                User: {commit.author.login}
+                        <div className='commit-data'>
+                            {commit.author && (
+                                <div className='commit-username'>
+                                    User: {commit.author.login}
+                                </div>
+                            )}
+                            <div className='commit-hash'>
+                                Hash: {commit.sha}
                             </div>
-                        )}
-                        <div className='commit-hash'>
-                            Hash: {commit.sha}
+                            <div className='commit-date-created'>Created on: {new Date(commit.commit.author.date).toLocaleString('en-US')}</div>
                         </div>
-                        <div className='commit-date-created'>Created on: {new Date(commit.commit.author.date).toLocaleString('en-US')}</div>
                     </div>
                 )
             })}
