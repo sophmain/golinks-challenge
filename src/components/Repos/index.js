@@ -41,23 +41,29 @@ const Repos = ({ search }) => {
                         <h2 className='repo-title'>{repo.name}</h2>
                         <div className='repo-info-parent'>
                             <div className='lang-desc-container'>
-                                {repo.language && (
-                                    <div className='repo-lang'> Language:
-                                        {repo.language}
-                                    </div>
-                                )}
                                 {repo.description && (
                                     <div className='repo-desc'>
-                                        <span>{repo.description}</span>
+                                        <span>Description: {repo.description}</span>
                                     </div>
+                                )}
+                                {!repo.description && (
+                                    <div className='repo-desc'>
+                                        <span>Description: N/A</span>
+                                    </div>
+                                )}
+                                {repo.language && (
+                                    <div className='repo-lang'> Language: {repo.language}</div>
+                                )}
+                                {!repo.language && (
+                                    <div className='repo-lang'> Language: N/A</div>
                                 )}
                             </div>
                             <div className='repo-data-container'>
                                 <div className='repo-stars'>
-                                    {repo.stargazers_count} <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i> {repo.stargazers_count}
                                 </div>
                                 <div className='repo-fork'>
-                                    {repo.forks_count} <i className="fa-solid fa-code-fork"></i>
+                                <i className="fa-solid fa-code-fork"></i> {repo.forks_count}
                                 </div>
                                 <div className='date-created'>Created on: {new Date(repo.created_at).toLocaleDateString('en-US')}</div>
                             </div>

@@ -1,5 +1,5 @@
 .commit-card {
-    border: 1px solid red;
+    border: 1px solid lightseagreen;
     border-radius: 20px;
     margin-bottom: 10px;
     padding: 10px;
@@ -7,4 +7,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.go-back {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.go-back:hover {
+    color: lightgray;
 }

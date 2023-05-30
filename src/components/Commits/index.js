@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import './Commits.css'
 
 const Commits = () => {
+    const navigate = useNavigate()
     const { repoName, repoOwner } = useParams()
-    console.log('name', repoName)
-    console.log('owner', repoOwner)
-    const [allCommits, setAllCommits] = useState()
+    const [allCommits, setAllCommits] = useState([])
+
     console.log('allcommits', allCommits)
     useEffect(() => {
 
@@ -19,25 +19,39 @@ const Commits = () => {
 
 
     }, [])
-    if (!allCommits) return null
+
+    if (!allCommits) {
+        return null
+    } else {
+        allCommits.sort((a, b) => {
+            return b.commit.author.date - a.commit.author.date
+        })
+    }
+    const backButton = () => {
+        navigate(`/`)
+    }
+
     return (
-        <>
-        {allCommits.map((commit) => {
-            return (
-                <div key={commit.node_id} className='commit-card'>
-                    <div className='commit-message'>{commit.commit.message}</div>
-                    <div className='commit-username'>
-                        User: {commit.committer.login}
+        <div className='commits-parent'>
+            <button className='go-back' onClick={() => backButton()}><i className="fa-solid fa-arrow-left"></i></button>
+            {allCommits.length > 0 && allCommits.map((commit) => {
+                return (
+                    <div key={commit.node_id} className='commit-card'>
+                        <div className='commit-message' style={{ fontWeight: 'bold' }}>{commit.commit.message}</div>
+                        {commit.author && (
+                            <div className='commit-username'>
+                                User: {commit.author.login}
+                            </div>
+                        )}
+                        <div className='commit-hash'>
+                            Hash: {commit.sha}
+                        </div>
+                        <div className='commit-date-created'>Created on: {new Date(commit.commit.author.date).toLocaleString('en-US')}</div>
                     </div>
-                    <div className='commit-hash'>
-                        Hash: {commit.sha}
-                    </div>
-                    <div className='commit-date-created'>Created on: {new Date(commit.commit.author.date).toLocaleString('en-US')}</div>
-                </div>
-            )
-        })}
-        {/* <div>{allRepos[0].id}</div> */}
-    </>
+                )
+            })}
+            {/* <div>{allRepos[0].id}</div> */}
+        </div>
     )
 }
 export default Commits

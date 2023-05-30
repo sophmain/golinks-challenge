@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Repos from './components/Repos'
 import Commits from './components/Commits'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
 
 function App() {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(localStorage.getItem("search") || "");
+
+  useEffect(()=> {
+    localStorage.setItem('search', search)
+  }, [search])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,12 +45,7 @@ function App() {
         <Routes>
           <Route exact path = '/' element={<Repos search = {search} />} />
           <Route exact path = '/:repoOwner/:repoName' element ={<Commits />} />
-
         </Routes>
-        {/* <Repos search={search} /> */}
-        {/* < Route exact path='/:name'>
-        <Commits />
-      </Route> */}
       </div>
     </Router>
   );
