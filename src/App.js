@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <div>
-        <h1>Search for GitHub organization</h1>
+        <h1>GitHub organizations</h1>
         <div>
           <div>
             <form>
