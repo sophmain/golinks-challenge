@@ -22,8 +22,11 @@
     justify-content: space-between;
 }
 .repo-title{
-    margin-bottom: 10px;
+    margin: 0px 0px 10px 0px;
 }
 .repo-desc {
     margin-bottom: 8px;
+}
+.repo-data-container {
+    text-align: right;
 }
