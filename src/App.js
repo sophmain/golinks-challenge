@@ -5,14 +5,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
 
 function App() {
+  const [input, setInput] = useState('');
   const [search, setSearch] = useState(localStorage.getItem("search") || "");
 
-  useEffect(()=> {
+  useEffect(() => {
     localStorage.setItem('search', search)
   }, [search])
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSearch(input);
   }
 
   return (
@@ -27,8 +29,8 @@ function App() {
                   Search for GitHub organization
                 </label>
                 <input
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
                   type="text"
                   className="form-control"
                   id="githubOrgSearch"
@@ -43,8 +45,8 @@ function App() {
           </div>
         </div>
         <Routes>
-          <Route exact path = '/' element={<Repos search = {search} />} />
-          <Route exact path = '/:repoOwner/:repoName' element ={<Commits />} />
+          <Route exact path='/' element={<Repos search={search} />} />
+          <Route exact path='/:repoOwner/:repoName' element={<Commits />} />
         </Routes>
       </div>
     </Router>
