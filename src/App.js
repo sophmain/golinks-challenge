@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Repos from './components/Repos'
 
 function App() {
   const [search, setSearch] = useState('');
@@ -29,6 +30,7 @@ function App() {
           </form>
         </div>
       </div>
+      < Repos />
     </div>
   );
 }
