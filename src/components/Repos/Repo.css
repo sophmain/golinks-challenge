@@ -6,7 +6,8 @@
     padding: 10px;
 }
 .repo-card:hover {
-    background-color: lightgray;
+    background-color: rgb(181, 234, 232);
+    transition: .5s;
 }
 .repo-info-parent{
     display: flex;
