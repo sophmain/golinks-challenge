@@ -34,6 +34,7 @@ const Commits = () => {
     return (
         <div className='commits-parent'>
             <button className='go-back' onClick={() => backButton()}><i className="fa-solid fa-arrow-left"></i></button>
+            <h2 style={{textAlign: 'center', marginTop: '0px'}}>Commits</h2>
             {allCommits.length > 0 && allCommits.map((commit) => {
                 return (
                     <div key={commit.node_id} className='commit-card'>
