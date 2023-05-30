@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.form-control {
+    flex-grow: 1;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+    width: 92%;
+
+}
+
+.btn-primary {
+    margin-left: 10px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 2px solid lightseagreen;
+}
+.search-box {
+    width: 100%;
+}
+.btn-primary{
+    color: lightseagreen;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn-primary:hover{
+    color: white;
+    background-color: lightseagreen;
+    transition: .7s;
+}

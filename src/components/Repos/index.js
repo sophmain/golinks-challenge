@@ -24,34 +24,44 @@ const Repos = ({ search }) => {
         return null
     } else {
         allRepos.sort((a, b) => {
-            a.stargazers_count - b.stargazers_count
+            return b.stargazers_count - a.stargazers_count
         })
     }
 
     //function to go to commits page when clicking repo card
     const toCommits = (repo) => {
-        navigate(`/${repo.name}`)
+        navigate(`/${repo.full_name}`)
     }
 
     return (
         <>
             {allRepos.map((repo) => {
                 return (
-                    <div key={repo.id} className='repo-card' onClick={toCommits}>
+                    <div key={repo.id} className='repo-card' onClick={() => toCommits(repo)}>
                         <h2 className='repo-title'>{repo.name}</h2>
-                        <div className='repo-lang'>
-                            {repo.language}
+                        <div className='repo-info-parent'>
+                            <div className='lang-desc-container'>
+                                {repo.language && (
+                                    <div className='repo-lang'> Language:
+                                        {repo.language}
+                                    </div>
+                                )}
+                                {repo.description && (
+                                    <div className='repo-desc'>
+                                        <span>{repo.description}</span>
+                                    </div>
+                                )}
+                            </div>
+                            <div className='repo-data-container'>
+                                <div className='repo-stars'>
+                                    {repo.stargazers_count} <i className="fa-solid fa-star"></i>
+                                </div>
+                                <div className='repo-fork'>
+                                    {repo.forks_count} <i className="fa-solid fa-code-fork"></i>
+                                </div>
+                                <div className='date-created'>Created on: {new Date(repo.created_at).toLocaleDateString('en-US')}</div>
+                            </div>
                         </div>
-                        <div className='repo-desc'>
-                            {repo.description}
-                        </div>
-                        <div className='repo-stars'> Stars
-                            {repo.stargazers_count}
-                        </div>
-                        <div className='repo-fork'> Forks
-                            {repo.forks_count}
-                        </div>
-                        <div className='date-created'>Created on: {new Date(repo.created_at).toLocaleDateString('en-US')}</div>
                     </div>
                 )
             })}

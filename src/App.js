@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Repos from './components/Repos'
 import Commits from './components/Commits'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css'
 
 function App() {
   const [search, setSearch] = useState('');
@@ -13,11 +14,11 @@ function App() {
   return (
     <Router>
       <div>
-        <h1>Search for a GitHub organization</h1>
+        <h1>Search for GitHub organization</h1>
         <div>
           <div>
             <form>
-              <div>
+              <div className='search-box'>
                 <label htmlFor="githubOrgSearch" hidden>
                   Search for GitHub organization
                 </label>
@@ -32,14 +33,14 @@ function App() {
                 />
               </div>
               <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
-                Search
+                SEARCH
               </button>
             </form>
           </div>
         </div>
         <Routes>
           <Route exact path = '/' element={<Repos search = {search} />} />
-          <Route exact path = '/:repoName' element ={<Commits />} />
+          <Route exact path = '/:repoOwner/:repoName' element ={<Commits />} />
 
         </Routes>
         {/* <Repos search={search} /> */}

@@ -1,0 +1,10 @@
+.commit-card {
+    border: 1px solid red;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    min-height: 125px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
